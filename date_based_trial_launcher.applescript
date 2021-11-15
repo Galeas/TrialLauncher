@@ -1,7 +1,8 @@
 set app_name to "<#app_name#>"
 
-tell application "Finder" to set is_exist to exists application file ((path to applications folder as string) & app_name)
-if is_exist is false then
+set app_path to POSIX path of (path to applications folder) & app_name & ".app"
+tell application "Finder" to set is_exists to exists application file app_path as POSIX file
+if is_exists is false then
 	return -1
 end if
 
